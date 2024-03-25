@@ -15,10 +15,11 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Failure {
+public class FailureEntity {
     @Id
     @GeneratedValue
     private Long id;
+    private String servicerName;
     private FailureType failureType;
     private String name;
     private Date date;

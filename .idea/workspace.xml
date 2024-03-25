@@ -4,49 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d56d9a80-6e6a-4b88-9442-394a6ad466b3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/serwis-backend/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/serwis-backend/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/serwis-backend/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/serwis-backend/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/serwis-backend/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/serwis-backend/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/serwis-backend/src/main/java/me/jorlowski/serwisbackend/SerwisBackendApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/serwis-backend/src/main/java/me/jorlowski/serwisbackend/model/Failure.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/serwis-backend/src/main/java/me/jorlowski/serwisbackend/model/FailureType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/serwis-backend/src/main/java/me/jorlowski/serwisbackend/model/Status.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/serwis-backend/src/main/java/me/jorlowski/serwisbackend/repository/FailureRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/serwis-backend/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/serwis-backend/src/test/java/me/jorlowski/serwisbackend/SerwisBackendApplicationTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/serwis-frontend.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/serwis-frontend/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/serwis-frontend/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/serwis-frontend/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/serwis-frontend/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/serwis-frontend/public/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/serwis-frontend/public/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/serwis-frontend/public/logo192.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/serwis-frontend/public/logo512.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/serwis-frontend/public/manifest.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/serwis-frontend/public/robots.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/serwis-frontend/src/App.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/serwis-frontend/src/App.test.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/serwis-frontend/src/App.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/serwis-frontend/src/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/serwis-frontend/src/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/serwis-frontend/src/logo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/serwis-frontend/src/react-app-env.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/serwis-frontend/src/reportWebVitals.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/serwis-frontend/src/setupTests.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/serwis-frontend/tsconfig.json" afterDir="false" />
+    <list default="true" id="d56d9a80-6e6a-4b88-9442-394a6ad466b3" name="Changes" comment="Yes">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/serwis-backend/src/main/java/me/jorlowski/serwisbackend/controller/FailureController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/serwis-backend/src/main/java/me/jorlowski/serwisbackend/model/NewFailure.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/serwis-backend/src/main/java/me/jorlowski/serwisbackend/service/FailureService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/serwis-backend/src/main/java/me/jorlowski/serwisbackend/model/Failure.java" beforeDir="false" afterPath="$PROJECT_DIR$/serwis-backend/src/main/java/me/jorlowski/serwisbackend/model/FailureEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/serwis-backend/src/main/java/me/jorlowski/serwisbackend/repository/FailureRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/serwis-backend/src/main/java/me/jorlowski/serwisbackend/repository/FailureRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,9 +21,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Enum" />
         <option value="Interface" />
+        <option value="Record" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -79,28 +45,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "jdk.selected.JAVA_MODULE": "21",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_interpreter_path": "node",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;21&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="me.jorlowski.serwisbackend.model" />
@@ -128,8 +94,18 @@
       <updated>1710958377051</updated>
       <workItem from="1710958378229" duration="1392000" />
       <workItem from="1710980676754" duration="12000" />
-      <workItem from="1711291833825" duration="2353000" />
+      <workItem from="1711291833825" duration="2508000" />
+      <workItem from="1711327412533" duration="1873000" />
     </task>
+    <task id="LOCAL-00001" summary="Yes">
+      <option name="closed" value="true" />
+      <created>1711294281415</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1711294281415</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -148,5 +124,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Yes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Yes" />
   </component>
 </project>
