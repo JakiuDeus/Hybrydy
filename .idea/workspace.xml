@@ -4,14 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d56d9a80-6e6a-4b88-9442-394a6ad466b3" name="Changes" comment="Yes">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/serwis-backend/src/main/java/me/jorlowski/serwisbackend/controller/FailureController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/serwis-backend/src/main/java/me/jorlowski/serwisbackend/model/NewFailure.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/serwis-backend/src/main/java/me/jorlowski/serwisbackend/service/FailureService.java" afterDir="false" />
+    <list default="true" id="d56d9a80-6e6a-4b88-9442-394a6ad466b3" name="Changes" comment="Basic backend">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/serwis-backend/src/main/java/me/jorlowski/serwisbackend/model/Failure.java" beforeDir="false" afterPath="$PROJECT_DIR$/serwis-backend/src/main/java/me/jorlowski/serwisbackend/model/FailureEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/serwis-backend/src/main/java/me/jorlowski/serwisbackend/repository/FailureRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/serwis-backend/src/main/java/me/jorlowski/serwisbackend/repository/FailureRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/serwis-backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/serwis-backend/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/serwis-backend/src/main/java/me/jorlowski/serwisbackend/controller/FailureController.java" beforeDir="false" afterPath="$PROJECT_DIR$/serwis-backend/src/main/java/me/jorlowski/serwisbackend/controller/FailureController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/serwis-backend/src/main/java/me/jorlowski/serwisbackend/model/NewFailure.java" beforeDir="false" afterPath="$PROJECT_DIR$/serwis-backend/src/main/java/me/jorlowski/serwisbackend/model/NewFailure.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +92,13 @@
       <workItem from="1710958378229" duration="1392000" />
       <workItem from="1710980676754" duration="12000" />
       <workItem from="1711291833825" duration="2508000" />
-      <workItem from="1711327412533" duration="1873000" />
+      <workItem from="1711327412533" duration="2046000" />
+      <workItem from="1711329504921" duration="381000" />
+      <workItem from="1711921411799" duration="53000" />
+      <workItem from="1712091501142" duration="1936000" />
+      <workItem from="1712275323823" duration="41000" />
+      <workItem from="1712415050601" duration="2346000" />
+      <workItem from="1712420086109" duration="9000" />
     </task>
     <task id="LOCAL-00001" summary="Yes">
       <option name="closed" value="true" />
@@ -105,7 +108,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711294281415</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Basic backend">
+      <option name="closed" value="true" />
+      <created>1711329305784</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1711329305784</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -125,6 +136,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Yes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Yes" />
+    <MESSAGE value="Basic backend" />
+    <option name="LAST_COMMIT_MESSAGE" value="Basic backend" />
   </component>
 </project>
