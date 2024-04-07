@@ -33,4 +33,16 @@ public class FailureService {
 
         return repository.saveAndFlush(failureEntity);
     }
+
+    public FailureEntity getById(Long id) {
+        return repository.getReferenceById(id);
+    }
+
+    public void deleteById(Long id) {
+        repository.deleteById(id);
+    }
+
+    public FailureEntity edit(FailureEntity failureEntity) {
+        return repository.saveAndFlush(failureEntity);
+    }
 }

@@ -1,5 +1,6 @@
 package me.jorlowski.serwisbackend.controller;
 
+import me.jorlowski.serwisbackend.model.EditFailure;
 import me.jorlowski.serwisbackend.model.FailureEntity;
 import me.jorlowski.serwisbackend.model.NewFailure;
 import me.jorlowski.serwisbackend.service.FailureService;
@@ -23,15 +24,31 @@ public class FailureController {
     }
 
     @GetMapping
-    public ResponseEntity<List<FailureEntity>> index() {
-       return ResponseEntity.ok(failureService.getFailures());
+    public List<FailureEntity> index() {
+       return failureService.getFailures();
+    }
+
+    @GetMapping("/{id}")
+    public FailureEntity getFailureById(@RequestParam Long id) {
+        return failureService.getById(id);
     }
 
     @PostMapping("/new-failure")
-    public ResponseEntity<FailureEntity> newFailure(@Validated @RequestBody NewFailure newFailure) {
-        URI uri = ServletUriComponentsBuilder.fromCurrentContextPath()
-                .path("/api/v1/failures/{id}")
-                .build(String.valueOf(failureService.create(newFailure, "TEST")));
-        return ResponseEntity.created(uri).build();
+    public FailureEntity newFailure(@Validated @RequestBody NewFailure newFailure) {
+        return failureService.create(newFailure, "TEST");
     }
+
+    @PostMapping("/edit/{id}")
+    public FailureEntity editFailure(@Validated @RequestBody EditFailure editFailure, @RequestParam Long id) {
+        FailureEntity failureEntity = failureService.getById(id);
+        //TODO pozamieniać
+        return failureService.edit(failureEntity);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteFailureById(@RequestParam Long id) {
+        failureService.deleteById(id);
+    }
+
+
 }
