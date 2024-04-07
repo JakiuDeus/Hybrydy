@@ -29,7 +29,7 @@ public class FailureController {
     }
 
     @GetMapping("/{id}")
-    public FailureEntity getFailureById(@RequestParam Long id) {
+    public FailureEntity getFailureById(@PathVariable Long id) {
         return failureService.getById(id);
     }
 
@@ -39,14 +39,14 @@ public class FailureController {
     }
 
     @PostMapping("/edit/{id}")
-    public FailureEntity editFailure(@Validated @RequestBody EditFailure editFailure, @RequestParam Long id) {
+    public FailureEntity editFailure(@Validated @RequestBody EditFailure editFailure, @PathVariable Long id) {
         FailureEntity failureEntity = failureService.getById(id);
         //TODO pozamieniać
         return failureService.edit(failureEntity);
     }
 
     @DeleteMapping("/delete/{id}")
-    public void deleteFailureById(@RequestParam Long id) {
+    public void deleteFailureById(@PathVariable Long id) {
         failureService.deleteById(id);
     }
 
