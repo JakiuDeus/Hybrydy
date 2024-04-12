@@ -6,7 +6,7 @@ import java.util.Date;
 
 public record NewFailure(
 
-        @NotEmpty
+
         FailureType failureType,
         String name,
         Date date,

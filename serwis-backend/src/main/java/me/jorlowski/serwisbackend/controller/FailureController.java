@@ -16,6 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/failures")
+@CrossOrigin
 public class FailureController {
     private final FailureService failureService;
 
@@ -35,6 +36,7 @@ public class FailureController {
 
     @PostMapping("/new-failure")
     public FailureEntity newFailure(@Validated @RequestBody NewFailure newFailure) {
+        System.out.println(newFailure);
         return failureService.create(newFailure, "TEST");
     }
 
