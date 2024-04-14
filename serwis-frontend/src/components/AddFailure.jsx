@@ -8,6 +8,7 @@ import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 import {DatePicker} from "@mui/x-date-pickers/DatePicker";
 import {LocalizationProvider} from "@mui/x-date-pickers/LocalizationProvider";
 import dayjs from "dayjs";
+import {Link, redirect, useNavigate} from "react-router-dom";
 
 
 export default function Add() {
@@ -20,23 +21,22 @@ export default function Add() {
     const[failures,setFailures]=useState([])
     const [date, setDate] = React.useState(dayjs());
     const [potentialDate, setPotential] = React.useState(dayjs());
+    const [servicerName, setServicer] = React.useState('');
+    const navigate = useNavigate();
 
     const handleClick=(e)=>{
         e.preventDefault()
-        const add={name,potentialPrice,failureType,repairDescription,status,potentialDate, date}
+        const add={name,potentialPrice,failureType,repairDescription,status,potentialDate, date,servicerName}
         console.log(add)
         fetch("http://localhost:8080/api/v1/failures/new-failure",{
             method:"POST",
             headers:{"content-type":"application/json"},
             body:JSON.stringify(add)
         })
+        navigate('/')
 
     }
-    useEffect(() => {
-        fetch("http://localhost:8080/api/v1/failures").then(res=>res.json()).then((result) => {
-            setFailures(result);
-        }
-        )}, []);
+
     return (
         <Box
             component="form"
@@ -114,26 +114,19 @@ export default function Add() {
                     onChange={(e)=>setRepair(e.target.value)}
                     fullWidth={false}
                 />
+                <TextField
+                    required
+                    value={servicerName}
+                    onChange={(e)=>setServicer(e.target.value)}
+                    id="servicerName"
+                    label="Imie serwisanta"
+                />
             </div>
-            <div>
-                <Button variant="contained" onClick={handleClick}>Zatwierdź</Button>
-            </div>
-                </Paper>
-                <Paper elevation={3} style={paperStyle}>
-                    {failures.map(failure=>(
-                        <Paper elevation={6} style={{margin:"10px",padding:"15px",textAlign:"left"}}>
-                        Name:{failure.name}
-                        type:{failure.failureType}
-                        price:{failure.potentialPrice}
-                        status:{failure.status}
-                        date:{failure.date}
-                        potential:{failure.potentialDate}
-                        repair:{failure.repairDescription}
 
 
-                        </Paper>
-                    ))}
+                    <Button variant="contained" onClick={handleClick}>Zatwierdź</Button>
                 </Paper>
+
             </Container>
         </Box>
     );
