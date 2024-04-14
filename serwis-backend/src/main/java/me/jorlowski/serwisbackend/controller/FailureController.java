@@ -35,7 +35,7 @@ public class FailureController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getFailureById(@PathVariable Long id) {
+    public ResponseEntity<FailureEntity> getFailureById(@PathVariable Long id) {
         FailureEntity failure = failureService.getById(id);
         if (failure != null) {
             return ResponseEntity.ok(failure);
