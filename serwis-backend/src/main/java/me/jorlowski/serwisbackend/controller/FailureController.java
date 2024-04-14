@@ -50,7 +50,7 @@ public class FailureController {
     }
 
     @PutMapping("/edit/{id}")
-    public ResponseEntity<FailureEntity> editFailure(@Validated @RequestBody EditFailure editFailure, @PathVariable Long id) {
+    public ResponseEntity<FailureEntity> editFailure(@RequestBody EditFailure editFailure, @PathVariable Long id) {
         FailureEntity failureEntity = failureService.getById(id);
         failureEntity.setServicerName(editFailure.servicerName());
         failureEntity.setPotentialPrice(editFailure.potentialPrice());
