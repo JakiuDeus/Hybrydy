@@ -55,8 +55,8 @@ export default function List(){
                             <th scope="col">Status awarii</th>
                             <th scope="col">Data zgłoszenia</th>
                             <th scope="col">Szac. Ukończenie</th>
-                            <th scope="col">Imię serwisanta</th>
-                            <th scope="col">Action</th>
+                            <th scope="col">Serwisant</th>
+                            <th scope="col">Akcje</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -69,12 +69,12 @@ export default function List(){
                                 <td>{failure.failureType}</td>
                                 <td>{failure.potentialPrice}</td>
                                 <td>{failure.status}</td>
-                                <td>{failure.date}</td>
-                                <td>{failure.potentialDate}</td>
+                                <td>{new Intl.DateTimeFormat('pl-PL').format(Date.parse(failure.date))}</td>
+                                <td>{new Intl.DateTimeFormat('pl-PL').format(Date.parse(failure.potentialDate))}</td>
                                 <td>{failure.servicerName}</td>
                                 <td>
                                     <Button variant="outlined" onClick={() => deleteFailure(failure.id)}>Usuń</Button>
-                                    <Link className="btn btn-outline-primary mx-2" to={`/EditFailure/${failure.id}`}>Edytuj</Link>
+                                    <Button variant="outlined" onClick={() => navigate("/EditFailure/"+failure.id)}>Edytuj</Button>
                                 </td>
                             </tr>
                         ))}

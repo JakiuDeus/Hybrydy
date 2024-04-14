@@ -24,11 +24,11 @@ export default function Add() {
     const [servicerName, setServicer] = React.useState('');
     const navigate = useNavigate();
 
-    const handleClick=(e)=>{
+     const handleClick=async (e)=>{
         e.preventDefault()
         const add={name,potentialPrice,failureType,repairDescription,status,potentialDate, date,servicerName}
         console.log(add)
-        fetch("http://localhost:8080/api/v1/failures/new-failure",{
+        await fetch("http://localhost:8080/api/v1/failures/new-failure",{
             method:"POST",
             headers:{"content-type":"application/json"},
             body:JSON.stringify(add)
