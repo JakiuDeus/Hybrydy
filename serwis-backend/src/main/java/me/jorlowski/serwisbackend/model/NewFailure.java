@@ -7,6 +7,7 @@ import java.util.Date;
 public record NewFailure(
 
 
+        String servicerName,
         FailureType failureType,
         String name,
         Date date,

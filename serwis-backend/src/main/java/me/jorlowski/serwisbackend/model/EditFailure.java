@@ -1,4 +1,12 @@
 package me.jorlowski.serwisbackend.model;
-// TODO to co potrzebne do formularza edycji
-public record EditFailure() {
+
+import java.util.Date;
+
+public record EditFailure(
+        String servicerName,
+        Float potentialPrice,
+        Date potentialDate,
+        Status status,
+        String repairDescription
+) {
 }

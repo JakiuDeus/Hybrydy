@@ -20,9 +20,9 @@ public class FailureService {
         return repository.findAll();
     }
 
-    public FailureEntity create(NewFailure newFailure, String servicerName) {
+    public FailureEntity create(NewFailure newFailure) {
         FailureEntity failureEntity = new FailureEntity();
-        failureEntity.setServicerName(servicerName);
+        failureEntity.setServicerName(newFailure.servicerName());
         failureEntity.setFailureType(newFailure.failureType());
         failureEntity.setName(newFailure.name());
         failureEntity.setDate(newFailure.date());
@@ -30,7 +30,6 @@ public class FailureService {
         failureEntity.setPotentialDate(newFailure.potentialDate());
         failureEntity.setStatus(newFailure.status());
         failureEntity.setRepairDescription(newFailure.repairDescription());
-
         return repository.saveAndFlush(failureEntity);
     }
 
