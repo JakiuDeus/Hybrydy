@@ -8,7 +8,7 @@ import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 import {DatePicker} from "@mui/x-date-pickers/DatePicker";
 import {LocalizationProvider} from "@mui/x-date-pickers/LocalizationProvider";
 import dayjs from "dayjs";
-import {Link, redirect, useNavigate} from "react-router-dom";
+import {Link, redirect, useNavigate, useParams} from "react-router-dom";
 
 
 export default function Edit() {
@@ -18,11 +18,12 @@ export default function Edit() {
     const[repairDescription,setRepair]=useState('')
     const[status,setStatus]=useState('')
     const[failureType,setFailure]=useState('')
-    const[failures,setFailures]=useState([])
+    const[failure,setFailures]=useState([])
     const [date, setDate] = React.useState(dayjs());
     const [potentialDate, setPotential] = React.useState(dayjs());
     const [servicerName, setServicer] = React.useState('');
     const navigate = useNavigate();
+    const {id} = useParams();
 
     const handleClick=(e)=>{
         e.preventDefault()
@@ -38,7 +39,8 @@ export default function Edit() {
 
     }
     useEffect(() => {
-        fetch("http://localhost:8080/api/v1/failures/").then(res=>res.json()).then((result) => {
+        console.log(id);
+        fetch("http://localhost:8080/api/v1/failures/"+id).then(res=>res.json()).then((result) => {
                 setFailures(result);
             }
         )}, []);
@@ -59,7 +61,7 @@ export default function Edit() {
                             <FormLabel id="failure_type">Rodzaj awarii</FormLabel>
                             <RadioGroup
                                 aria-labelledby="failure_type"
-                                value={failureType}
+                                value={failure.failureType}
                                 onChange={(e)=>setFailure(e.target.value)}
                                 name="radio-buttons-group"
                             >
@@ -71,11 +73,11 @@ export default function Edit() {
                         </FormControl>
                         <TextField
                             required
-                            value={name}
+                            value={failure.name}
                             onChange={(e)=>setName(e.target.value)}
-                            id="name"
+
                             label="Nazwa urządzenia"
-                            defaultValue="Urządzenie"
+                            defaultValue={failure.name}
                         />
                         <LocalizationProvider dateAdapter={AdapterDayjs}>
                             <DatePicker

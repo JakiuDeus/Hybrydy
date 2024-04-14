@@ -18,7 +18,6 @@ export default function Add() {
     const[repairDescription,setRepair]=useState('')
     const[status,setStatus]=useState('')
     const[failureType,setFailure]=useState('')
-    const[failures,setFailures]=useState([])
     const [date, setDate] = React.useState(dayjs());
     const [potentialDate, setPotential] = React.useState(dayjs());
     const [servicerName, setServicer] = React.useState('');
