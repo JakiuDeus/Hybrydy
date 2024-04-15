@@ -1,11 +1,13 @@
 package me.jorlowski.serwisbackend.controller;
 
+import com.fasterxml.jackson.databind.ser.std.JsonValueSerializer;
 import me.jorlowski.serwisbackend.model.EditFailure;
 import me.jorlowski.serwisbackend.model.FailureEntity;
 import me.jorlowski.serwisbackend.model.NewFailure;
 import me.jorlowski.serwisbackend.service.FailureService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.codec.json.Jackson2JsonEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
