@@ -4,13 +4,13 @@ import {Button, Container, Paper} from "@mui/material";
 
 import * as React from "react";
 
-import {Link, useNavigate, useParams} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 
 
 export default function List(){
 
-    const paperStyle={padding:'50px 20px',width:1000,margin:"20px auto"}
+    const paperStyle={padding:'50px 20px',width:1100,margin:"20px auto"}
     const navigate = useNavigate();
 
     const[failures,setFailures]=useState([])
@@ -56,6 +56,7 @@ export default function List(){
                             <th scope="col">Data zgłoszenia</th>
                             <th scope="col">Szac. Ukończenie</th>
                             <th scope="col">Serwisant</th>
+                            <th scope="col">Opis</th>
                             <th scope="col">Akcje</th>
                         </tr>
                         </thead>
@@ -72,9 +73,11 @@ export default function List(){
                                 <td>{new Intl.DateTimeFormat('pl-PL').format(Date.parse(failure.date))}</td>
                                 <td>{new Intl.DateTimeFormat('pl-PL').format(Date.parse(failure.potentialDate))}</td>
                                 <td>{failure.servicerName}</td>
+                                <td>{failure.repairDescription}</td>
                                 <td>
                                     <Button variant="outlined" onClick={() => deleteFailure(failure.id)}>Usuń</Button>
-                                    <Button variant="outlined" onClick={() => navigate("/EditFailure/"+failure.id)}>Edytuj</Button>
+                                    <Button variant="outlined"
+                                            onClick={() => navigate("/EditFailure/" + failure.id)}>Edytuj</Button>
                                 </td>
                             </tr>
                         ))}

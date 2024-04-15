@@ -8,29 +8,26 @@ import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 import {DatePicker} from "@mui/x-date-pickers/DatePicker";
 import {LocalizationProvider} from "@mui/x-date-pickers/LocalizationProvider";
 import dayjs from "dayjs";
-import {Link, redirect, useNavigate, useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 
 
 export default function Edit() {
     const paperStyle={padding:'50px 20px',width:700,margin:"20px auto"}
-    const[name,setName]=useState('')
     const[potentialPrice,setPrice]=useState('')
     const[repairDescription,setRepair]=useState('')
     const[status,setStatus]=useState('')
-    const[failureType,setFailure]=useState('')
     const[failure,setFailures]=useState([])
-    const [date, setDate] = React.useState(dayjs());
     const [potentialDate, setPotential] = React.useState(dayjs());
     const [servicerName, setServicer] = React.useState('');
     const navigate = useNavigate();
     const {id} = useParams();
 
-    const handleClick=(e)=>{
+    const handleClick=async (e)=>{
         e.preventDefault()
-        const add={name,potentialPrice,failureType,repairDescription,status,potentialDate, date,servicerName}
+        const add={potentialPrice,repairDescription,status,potentialDate,servicerName}
         console.log(add)
-        fetch("http://localhost:8080/api/v1/failures/edit",{
-            method:"POST",
+        fetch("http://localhost:8080/api/v1/failures/edit/"+id,{
+            method:"PUT",
             headers:{"content-type":"application/json"},
             body:JSON.stringify(add)
         })
@@ -39,11 +36,18 @@ export default function Edit() {
 
     }
     useEffect(() => {
-        console.log(id);
+
         fetch("http://localhost:8080/api/v1/failures/"+id).then(res=>res.json()).then((result) => {
                 setFailures(result);
+                console.log(result);
+            setPrice(result.potentialPrice);
+            setStatus(result.status);
+            setRepair(result.repairDescription);
+            setServicer(result.servicerName)
             }
+
         )}, []);
+
     return (
         <Box
             component="form"
@@ -55,37 +59,10 @@ export default function Edit() {
         >
             <Container>
                 <Paper elevation={3} style={paperStyle}>
-                    <h1 style={{color:"blue"}}>Dodaj zgłoszenie</h1>
+                    <h1 style={{color:"blue"}}>Edytuj zgłoszenie</h1>
                     <div>
-                        <FormControl>
-                            <FormLabel id="failure_type">Rodzaj awarii</FormLabel>
-                            <RadioGroup
-                                aria-labelledby="failure_type"
-                                value={failure.failureType}
-                                onChange={(e)=>setFailure(e.target.value)}
-                                name="radio-buttons-group"
-                            >
-                                <FormControlLabel value="LOW" control={<Radio />} label="Niewielka" />
-                                <FormControlLabel value="MILD" control={<Radio />} label="Średnia" />
-                                <FormControlLabel value="HIGH" control={<Radio />} label="Poważna" />
-                                <FormControlLabel value="CRITICAL" control={<Radio />} label="Krytyczna" />
-                            </RadioGroup>
-                        </FormControl>
-                        <TextField
-                            required
-                            value={failure.name}
-                            onChange={(e)=>setName(e.target.value)}
 
-                            label="Nazwa urządzenia"
-                            defaultValue={failure.name}
-                        />
-                        <LocalizationProvider dateAdapter={AdapterDayjs}>
-                            <DatePicker
-                                label="Data zgłoszenia"
-                                value={date}
-                                onChange={(newValue) => setDate(newValue)}
-                            />
-                        </LocalizationProvider>
+
                         <FormControl>
                             <FormLabel id="status">Status naprawy</FormLabel>
                             <RadioGroup

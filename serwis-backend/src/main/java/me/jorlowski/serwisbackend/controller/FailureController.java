@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ser.std.JsonValueSerializer;
 import me.jorlowski.serwisbackend.model.EditFailure;
 import me.jorlowski.serwisbackend.model.FailureEntity;
 import me.jorlowski.serwisbackend.model.NewFailure;
+import me.jorlowski.serwisbackend.model.Status;
 import me.jorlowski.serwisbackend.service.FailureService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,10 +38,17 @@ public class FailureController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<FailureEntity> getFailureById(@PathVariable Long id) {
+    public ResponseEntity<EditFailure> getFailureById(@PathVariable Long id) {
         FailureEntity failure = failureService.getById(id);
+        EditFailure editFailure = new EditFailure(
+                failure.getServicerName(),
+                failure.getPotentialPrice(),
+                failure.getPotentialDate(),
+                failure.getStatus().toString(),
+                failure.getRepairDescription()
+        );
         if (failure != null) {
-            return ResponseEntity.ok(failure);
+            return ResponseEntity.ok(editFailure);
         } else {
             return ResponseEntity.notFound().build();
         }
@@ -57,7 +65,7 @@ public class FailureController {
         failureEntity.setServicerName(editFailure.servicerName());
         failureEntity.setPotentialPrice(editFailure.potentialPrice());
         failureEntity.setPotentialDate(editFailure.potentialDate());
-        failureEntity.setStatus(editFailure.status());
+        failureEntity.setStatus(Status.valueOf(editFailure.status()));
         failureEntity.setRepairDescription(editFailure.repairDescription());
         return new ResponseEntity<>(failureService.edit(failureEntity), HttpStatus.OK);
     }

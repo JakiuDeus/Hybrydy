@@ -6,7 +6,7 @@ public record EditFailure(
         String servicerName,
         Float potentialPrice,
         Date potentialDate,
-        Status status,
+        String status,
         String repairDescription
 ) {
 }
