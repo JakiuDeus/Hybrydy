@@ -12,7 +12,7 @@ import {useNavigate} from "react-router-dom";
 
 
 export default function Add() {
-    const paperStyle={padding:'50px 20px',width:700,margin:"20px auto"}
+    const paperStyle={padding:'50px 20px',width:800,margin:"20px auto"}
     const[name,setName]=useState('')
     const[potentialPrice,setPrice]=useState('')
     const[repairDescription,setRepair]=useState('')
@@ -49,6 +49,27 @@ export default function Add() {
                 <Paper elevation={3} style={paperStyle}>
                     <h1 style={{color:"blue"}}>Dodaj zgłoszenie</h1>
             <div>
+                <TextField
+                    required
+                    value={servicerName}
+                    onChange={(e)=>setServicer(e.target.value)}
+                    id="servicerName"
+                    label="Imie serwisanta"
+                />
+                <TextField
+                    required
+                    value={name}
+                    onChange={(e)=>setName(e.target.value)}
+                    id="name"
+                    label="Nazwa urządzenia"
+                />
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    <DatePicker
+                        label="Data zgłoszenia"
+                        value={date}
+                        onChange={(newValue) => setDate(newValue)}
+                    />
+                </LocalizationProvider>
                 <FormControl>
                     <FormLabel id="failure_type">Rodzaj awarii</FormLabel>
                     <RadioGroup
@@ -63,21 +84,8 @@ export default function Add() {
                         <FormControlLabel value="CRITICAL" control={<Radio />} label="Krytyczna" />
                     </RadioGroup>
                 </FormControl>
-                <TextField
-                    required
-                    value={name}
-                    onChange={(e)=>setName(e.target.value)}
-                    id="name"
-                    label="Nazwa urządzenia"
-                    defaultValue="Urządzenie"
-                />
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                    <DatePicker
-                        label="Data zgłoszenia"
-                        value={date}
-                        onChange={(newValue) => setDate(newValue)}
-                    />
-                </LocalizationProvider>
+
+
                 <FormControl>
                     <FormLabel id="status">Status naprawy</FormLabel>
                     <RadioGroup
@@ -112,14 +120,10 @@ export default function Add() {
                     label="Opis podjętych działań"
                     onChange={(e)=>setRepair(e.target.value)}
                     fullWidth={false}
+                    style = {{width: 750, height: "auto"}}
+                    multiline={true}
                 />
-                <TextField
-                    required
-                    value={servicerName}
-                    onChange={(e)=>setServicer(e.target.value)}
-                    id="servicerName"
-                    label="Imie serwisanta"
-                />
+
             </div>
 
 

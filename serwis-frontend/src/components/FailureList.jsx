@@ -44,6 +44,8 @@ export default function List(){
                     <h1 style={{color: "blue"}}>Zgłoszenia</h1>
 
                 </Paper>
+                {
+                    failures.length > 0 ? (
                 <Paper elevation={3} style={paperStyle}>
                     <table className="table border shadow">
                         <thead>
@@ -83,7 +85,11 @@ export default function List(){
                         ))}
                         </tbody>
                     </table>
-                </Paper>
+                </Paper> )
+                :   <Paper elevation={3} style={paperStyle}>
+                        <h1 style={{color: "blue"}}>Brak zgłoszeń</h1>
+                    </Paper>
+                }
             </Container>
 
         </Box>
