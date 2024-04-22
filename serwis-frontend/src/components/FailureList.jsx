@@ -17,12 +17,20 @@ export default function List(){
 
 
     const deleteFailure = async (id) => {
+        try{
+            const response = await fetch("http://localhost:8080/api/v1/failures/delete/"+id, {
+                method: 'DELETE',
+            })
+            if (response.ok){
+                console.log('Dane zostały zmodyfikowane')
+                window.location.reload();
+            }else {
+                console.error('Błąd zapisu danych')
+            }
 
-        await fetch("http://localhost:8080/api/v1/failures/delete/"+id, {
-            method: 'DELETE',
-        })
-        navigate('/')
-
+        } catch (error){
+            console.error('Wystąpił błąd', error)
+        }
     }
 
     useEffect(() => {

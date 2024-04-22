@@ -20,10 +20,15 @@ export default function Edit() {
     const [potentialDate, setPotential] = React.useState(dayjs());
     const [servicerName, setServicer] = React.useState('');
     const navigate = useNavigate();
+    const [errorMessage , setErrorMessage] = React.useState('')
     const {id} = useParams();
 
     const handleClick=async (e)=>{
         e.preventDefault()
+        if(potentialPrice.trim() === '' || servicerName.trim() === ''){
+            setErrorMessage('Pola: Imię serwisanta oraz Szacowany koszt są wymagane');
+            return;
+        }
         const add={potentialPrice,repairDescription,status,potentialDate,servicerName}
         console.log(add)
         fetch("http://localhost:8080/api/v1/failures/edit/"+id,{
@@ -31,6 +36,7 @@ export default function Edit() {
             headers:{"content-type":"application/json"},
             body:JSON.stringify(add)
         })
+        setErrorMessage('');
         navigate('/')
 
 
@@ -78,6 +84,7 @@ export default function Edit() {
                             </RadioGroup>
                         </FormControl>
                         <TextField
+                            required
                             id="price"
                             value={potentialPrice}
                             onChange={(e)=>setPrice(e.target.value)}
@@ -107,7 +114,7 @@ export default function Edit() {
                         />
                     </div>
 
-
+                    {errorMessage && <p>{errorMessage}</p>}
                     <Button variant="contained" onClick={handleClick}>Zatwierdź</Button>
                 </Paper>
 

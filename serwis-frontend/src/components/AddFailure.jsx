@@ -21,19 +21,24 @@ export default function Add() {
     const [date, setDate] = React.useState(dayjs());
     const [potentialDate, setPotential] = React.useState(dayjs());
     const [servicerName, setServicer] = React.useState('');
+    const [errorMessage , setErrorMessage] = React.useState('')
     const navigate = useNavigate();
 
      const handleClick=async (e)=>{
-        e.preventDefault()
-        const add={name,potentialPrice,failureType,repairDescription,status,potentialDate, date,servicerName}
-        console.log(add)
-        await fetch("http://localhost:8080/api/v1/failures/new-failure",{
-            method:"POST",
-            headers:{"content-type":"application/json"},
-            body:JSON.stringify(add)
-        })
-        navigate('/')
-
+         e.preventDefault()
+         if(name.trim() === '' || potentialPrice.trim() === '' || servicerName.trim() === ''){
+             setErrorMessage('Pola: Imię serwisanta, Nazwa urządzenia oraz Szacowany koszt są wymagane');
+             return;
+         }
+         const add={name,potentialPrice,failureType,repairDescription,status,potentialDate, date,servicerName}
+         console.log(add)
+         await fetch("http://localhost:8080/api/v1/failures/new-failure",{
+             method:"POST",
+             headers:{"content-type":"application/json"},
+             body:JSON.stringify(add)
+         })
+         setErrorMessage('');
+         navigate('/')
     }
 
     return (
@@ -101,6 +106,7 @@ export default function Add() {
                     </RadioGroup>
                 </FormControl>
                 <TextField
+                    required
                     id="price"
                     value={potentialPrice}
                     onChange={(e)=>setPrice(e.target.value)}
@@ -126,7 +132,7 @@ export default function Add() {
 
             </div>
 
-
+                    {errorMessage && <p>{errorMessage}</p>}
                     <Button variant="contained" onClick={handleClick}>Zatwierdź</Button>
                 </Paper>
 
