@@ -1,7 +1,17 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import {Button, Container, FormControl, FormControlLabel, FormLabel, Paper, Radio, RadioGroup} from "@mui/material";
+import {
+    Button,
+    Container,
+    FormControl,
+    FormControlLabel,
+    FormLabel,
+    InputLabel, MenuItem,
+    Paper,
+    Radio,
+    RadioGroup, Select
+} from "@mui/material";
 import { useState} from "react";
 
 import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
@@ -15,13 +25,17 @@ export default function Add() {
     const paperStyle={padding:'50px 20px',width:800,margin:"20px auto"}
     const[name,setName]=useState('')
     const[potentialPrice,setPrice]=useState('')
+    const[predictedPrice,setPredicted]=useState('')
     const[repairDescription,setRepair]=useState('')
     const[status,setStatus]=useState('')
     const[failureType,setFailure]=useState('')
+    const[numberFailureType, setNumberFailure]=useState('')
     const [date, setDate] = React.useState(dayjs());
     const [potentialDate, setPotential] = React.useState(dayjs());
     const [servicerName, setServicer] = React.useState('');
     const [errorMessage , setErrorMessage] = React.useState('')
+    const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+    const [model, setModel] = useState('')
     const navigate = useNavigate();
 
      const handleClick=async (e)=>{
@@ -40,6 +54,50 @@ export default function Add() {
          setErrorMessage('');
          navigate('/')
     }
+
+    const handlePrediction = async (e) => {
+        e.preventDefault()
+        if (failureType.trim() === '' ) {
+            setErrorMessage('Aby oszacować, podaj Failure Type, Potential Date oraz Date');
+            return;
+        }
+        const msPerDay = 1000 * 60 * 60 * 24;
+        const diffDays = Math.abs(Math.round((date - potentialDate) / msPerDay));
+        try {
+            const response = await fetch(`http://localhost:${model}/invocations`, {
+                method: "POST",
+                headers: { "content-type": "text/csv" },
+                body: `FAILURE_TYPE,DATE\n${numberFailureType},${diffDays}`
+            });
+            const result = await response.text();
+            const predictedPrice = parseFloat(result);
+            document.getElementById('predictedPrice').value = predictedPrice.toFixed(2);
+            setErrorMessage('');
+            navigate('/');
+        } catch (error) {
+            console.error(error);
+            setErrorMessage('Error making prediction');
+        }
+    }
+
+    const handleFailureChange = (event) => {
+        setFailure(event.target.value);
+        switch (failureType) {
+            case 'LOW':
+                setNumberFailure(0);
+            case 'MILD':
+                setNumberFailure(1);
+            case 'HIGH':
+                setNumberFailure(2);
+            default:
+                setNumberFailure(3);
+        }
+        if (event.target.value!== '') {
+            setIsButtonDisabled(false);
+        } else {
+            setIsButtonDisabled(true);
+        }
+    };
 
     return (
         <Box
@@ -80,7 +138,11 @@ export default function Add() {
                     <RadioGroup
                         aria-labelledby="failure_type"
                         value={failureType}
-                        onChange={(e)=>setFailure(e.target.value)}
+
+                        onChange={(event) => {
+                            handleFailureChange(event);
+
+                        }}
                         name="radio-buttons-group"
                     >
                         <FormControlLabel value="LOW" control={<Radio />} label="Niewielka" />
@@ -121,6 +183,31 @@ export default function Add() {
                     />
                 </LocalizationProvider>
                 <TextField
+                    disabled
+                    id="predictedPrice"
+                    value={predictedPrice}
+                    onChange={(e)=>setPredicted(e.target.value)}
+                    label="Szacowany koszt przez AI"
+                    type="number"
+                />
+                <FormControl>
+                    <InputLabel id="demo-simple-select-label">Wybierz model AI</InputLabel>
+                    <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        value={model}
+                        label="Age"
+                        onChange={event => setModel(event.target.value)}
+                        sx={{ width: 200 }}
+                    >
+                        <MenuItem value={5000}>Random Forest Regression</MenuItem>
+                        <MenuItem value={5001}>Random Forest Classifier</MenuItem>
+                        <MenuItem value={5002}>Linear Regression</MenuItem>
+                        <MenuItem value={5003}>Logystic Regression</MenuItem>
+                        <MenuItem value={5004}>Decision Tree Clasifier</MenuItem>
+                    </Select>
+                </FormControl>
+                <TextField
                     id="repair_description"
                     value={repairDescription}
                     label="Opis podjętych działań"
@@ -134,6 +221,7 @@ export default function Add() {
 
                     {errorMessage && <p>{errorMessage}</p>}
                     <Button variant="contained" onClick={handleClick}>Zatwierdź</Button>
+                    <Button variant="contained" onClick={handlePrediction} disabled={isButtonDisabled}>Szacuj</Button>
                 </Paper>
 
             </Container>

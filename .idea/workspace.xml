@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d56d9a80-6e6a-4b88-9442-394a6ad466b3" name="Changes" comment="Basic backend">
+    <list default="true" id="d56d9a80-6e6a-4b88-9442-394a6ad466b3" name="Changes" comment="Finaal">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/serwis-backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/serwis-backend/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/serwis-backend/src/main/java/me/jorlowski/serwisbackend/controller/FailureController.java" beforeDir="false" afterPath="$PROJECT_DIR$/serwis-backend/src/main/java/me/jorlowski/serwisbackend/controller/FailureController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/serwis-backend/src/main/java/me/jorlowski/serwisbackend/model/NewFailure.java" beforeDir="false" afterPath="$PROJECT_DIR$/serwis-backend/src/main/java/me/jorlowski/serwisbackend/model/NewFailure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/serwis-frontend/src/components/AddFailure.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/serwis-frontend/src/components/AddFailure.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +22,7 @@
         <option value="Interface" />
         <option value="Record" />
         <option value="Class" />
+        <option value="JSX File" />
       </list>
     </option>
   </component>
@@ -45,22 +46,32 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;JavaScript Debug.Debug Application.executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Spring Boot.SerwisBackendApplication.executor&quot;: &quot;Run&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;21&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/STUDIA/SEMESTR6/Hybryda/Hybrydy&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;npm.start.executor&quot;: &quot;Run&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;E:\\STUDIA\\SEMESTR6\\Hybryda\\Hybrydy\\serwis-frontend\\node_modules\\typescript\\lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -69,8 +80,8 @@
       <recent name="me.jorlowski.serwisbackend.model" />
     </key>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.Debug Application">
-    <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
+  <component name="RunManager" selected="npm.start">
+    <configuration name="Debug Application" type="JavascriptDebugType" engineId="53e2f627-b1a7-4dfa-bfa7-5b83cc034776" uri="http://localhost:3000">
       <method v="2" />
     </configuration>
     <configuration name="SerwisBackendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
@@ -80,6 +91,33 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/serwis-frontend/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="JavaScript Debug.Debug Application" />
+      <item itemvalue="npm.start" />
+      <item itemvalue="Spring Boot.SerwisBackendApplication" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.start" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-21.0.1-openjdk-21.0.1-3183f394aec4-7d648f2c" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -92,13 +130,20 @@
       <workItem from="1710958378229" duration="1392000" />
       <workItem from="1710980676754" duration="12000" />
       <workItem from="1711291833825" duration="2508000" />
-      <workItem from="1711327412533" duration="2046000" />
-      <workItem from="1711329504921" duration="381000" />
-      <workItem from="1711921411799" duration="53000" />
-      <workItem from="1712091501142" duration="1936000" />
-      <workItem from="1712275323823" duration="41000" />
-      <workItem from="1712415050601" duration="2346000" />
-      <workItem from="1712420086109" duration="9000" />
+      <workItem from="1711327412533" duration="1873000" />
+      <workItem from="1712091763470" duration="1103000" />
+      <workItem from="1712420165568" duration="315000" />
+      <workItem from="1712437922236" duration="1420000" />
+      <workItem from="1712504028854" duration="21084000" />
+      <workItem from="1712880988795" duration="263000" />
+      <workItem from="1713110913453" duration="27761000" />
+      <workItem from="1713725564938" duration="2188000" />
+      <workItem from="1713742458695" duration="2007000" />
+      <workItem from="1716411503477" duration="236000" />
+      <workItem from="1717027539862" duration="91000" />
+      <workItem from="1717787848309" duration="534000" />
+      <workItem from="1718629594567" duration="1210000" />
+      <workItem from="1718652380328" duration="5805000" />
     </task>
     <task id="LOCAL-00001" summary="Yes">
       <option name="closed" value="true" />
@@ -108,15 +153,47 @@
       <option name="project" value="LOCAL" />
       <updated>1711294281415</updated>
     </task>
-    <task id="LOCAL-00002" summary="Basic backend">
+    <task id="LOCAL-00002" summary="Yes">
       <option name="closed" value="true" />
-      <created>1711329305784</created>
+      <created>1712881152616</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1711329305784</updated>
+      <updated>1712881152616</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Yes">
+      <option name="closed" value="true" />
+      <created>1713135368499</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1713135368499</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Yes">
+      <option name="closed" value="true" />
+      <created>1713137931205</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1713137931205</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Finaal">
+      <option name="closed" value="true" />
+      <created>1713147281790</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1713147281791</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Finaal">
+      <option name="closed" value="true" />
+      <created>1713744312039</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1713744312039</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -136,7 +213,17 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Yes" />
-    <MESSAGE value="Basic backend" />
-    <option name="LAST_COMMIT_MESSAGE" value="Basic backend" />
+    <MESSAGE value="Finaal" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finaal" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="com.fasterxml.jackson.databind.exc.InvalidDefinitionException" package="com.fasterxml.jackson.databind.exc" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
