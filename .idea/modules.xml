@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/SerwisKomputerowyOJKA.iml" filepath="$PROJECT_DIR$/SerwisKomputerowyOJKA.iml" />
       <module fileurl="file://$PROJECT_DIR$/serwis-frontend.iml" filepath="$PROJECT_DIR$/serwis-frontend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/serwis-python/serwis-python.iml" filepath="$PROJECT_DIR$/serwis-python/serwis-python.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../serwis-python-modeling/serwis-python-modeling.iml" filepath="$PROJECT_DIR$/../serwis-python-modeling/serwis-python-modeling.iml" />
     </modules>
   </component>
 </project>
