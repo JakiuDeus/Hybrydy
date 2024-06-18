@@ -10,7 +10,7 @@ import {
     Radio,
     RadioGroup, Select
 } from "@mui/material";
-import { useState} from "react";
+import {useEffect, useState} from "react";
 
 import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 import {DatePicker} from "@mui/x-date-pickers/DatePicker";
@@ -26,14 +26,14 @@ export default function Add() {
     const[predictedPrice,setPredicted]=useState('')
     const[repairDescription,setRepair]=useState('')
     const[status,setStatus]=useState('')
-    const[failureType,setFailure]=useState('')
-    const[numberFailureType, setNumberFailure]=useState('')
+    const [failureType,setFailure]=useState('')
+    const[numberFailureType, setNumberFailure]=useState(0)
     const [date, setDate] = React.useState(dayjs());
     const [potentialDate, setPotential] = React.useState(dayjs());
     const [servicerName, setServicer] = React.useState('');
     const [errorMessage , setErrorMessage] = React.useState('')
     const [isButtonDisabled, setIsButtonDisabled] = useState(true);
-    const [model, setModel] = useState(0)
+    const [model, setModel] = useState(0);
     const navigate = useNavigate();
 
      const handleClick=async (e)=>{
@@ -63,6 +63,8 @@ export default function Add() {
         const diffDays = Math.abs(Math.round((date - potentialDate) / msPerDay));
         try {
             const body_data = {numberFailureType, diffDays}
+            console.log(numberFailureType)
+            console.log(diffDays)
             const response = await fetch(`http://localhost:5000/api/v1/${model}`, {
                 method: "POST",
                 headers: {
@@ -80,19 +82,32 @@ export default function Add() {
         }
     }
 
-    const handleFailureChange = (event) => {
-        setFailure(event.target.value);
+    useEffect(() => {
+        console.log(failureType);
         switch (failureType) {
-            case 'LOW':
+            case "LOW":
                 setNumberFailure(0);
-            case 'MILD':
+                break;
+            case "MILD":
                 setNumberFailure(1);
-            case 'HIGH':
+                break;
+            case "HIGH":
                 setNumberFailure(2);
+                break;
             default:
                 setNumberFailure(3);
+                break;
         }
-        if (event.target.value!== '') {
+    }, [failureType]);
+
+    useEffect(() => {
+        console.log(numberFailureType);
+    }, [numberFailureType]);
+
+    const handleFailureChange = (event) => {
+        const newValue = event.target.value;
+        setFailure(newValue);
+        if (newValue !== '') {
             setIsButtonDisabled(false);
         } else {
             setIsButtonDisabled(true);
@@ -130,9 +145,7 @@ export default function Add() {
                         <RadioGroup
                             aria-labelledby="failure_type"
                             value={failureType}
-                            onChange={(event) => {
-                                handleFailureChange(event);
-                            }}
+                            onChange={(event) => {handleFailureChange(event);}}
                             name="radio-buttons-group"
                         >
                             <FormControlLabel value="LOW" control={<Radio />} label="Niewielka" />
@@ -212,9 +225,7 @@ export default function Add() {
                             id="demo-simple-select"
                             value={model}
                             label="Model"
-                            InputLabelProps={{
-                                shrink: true,
-                            }}
+
                             onChange={(event) => setModel(event.target.value)}
                             fullWidth
 
