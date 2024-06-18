@@ -64,16 +64,18 @@ export default function Add() {
         const msPerDay = 1000 * 60 * 60 * 24;
         const diffDays = Math.abs(Math.round((date - potentialDate) / msPerDay));
         try {
-            const response = await fetch(`http://localhost:${model}/invocations`, {
+            const body_data = {numberFailureType, diffDays}
+            const response = await fetch(`http://localhost:5000/api/v1/${model}`, {
                 method: "POST",
-                headers: { "content-type": "text/csv" },
-                body: `FAILURE_TYPE,DATE\n${numberFailureType},${diffDays}`
+                headers: {
+                    "content-type": "application/json",
+                },
+                body:JSON.stringify(body_data)
             });
             const result = await response.text();
             const predictedPrice = parseFloat(result);
             document.getElementById('predictedPrice').value = predictedPrice.toFixed(2);
             setErrorMessage('');
-            navigate('/');
         } catch (error) {
             console.error(error);
             setErrorMessage('Error making prediction');
@@ -200,11 +202,11 @@ export default function Add() {
                         onChange={event => setModel(event.target.value)}
                         sx={{ width: 200 }}
                     >
-                        <MenuItem value={5000}>Random Forest Regression</MenuItem>
-                        <MenuItem value={5001}>Random Forest Classifier</MenuItem>
-                        <MenuItem value={5002}>Linear Regression</MenuItem>
-                        <MenuItem value={5003}>Logystic Regression</MenuItem>
-                        <MenuItem value={5004}>Decision Tree Clasifier</MenuItem>
+                        <MenuItem value={0}>Random Forest Regression</MenuItem>
+                        <MenuItem value={1}>Random Forest Classifier</MenuItem>
+                        <MenuItem value={2}>Linear Regression</MenuItem>
+                        <MenuItem value={3}>Logystic Regression</MenuItem>
+                        <MenuItem value={4}>Decision Tree Clasifier</MenuItem>
                     </Select>
                 </FormControl>
                 <TextField
