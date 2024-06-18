@@ -1,14 +1,12 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import {
     Button,
     Container,
     FormControl,
     FormControlLabel,
-    FormLabel,
+    FormLabel, Grid,
     InputLabel, MenuItem,
-    Paper,
     Radio,
     RadioGroup, Select
 } from "@mui/material";
@@ -19,10 +17,10 @@ import {DatePicker} from "@mui/x-date-pickers/DatePicker";
 import {LocalizationProvider} from "@mui/x-date-pickers/LocalizationProvider";
 import dayjs from "dayjs";
 import {useNavigate} from "react-router-dom";
+import Typography from "@mui/material/Typography";
 
 
 export default function Add() {
-    const paperStyle={padding:'50px 20px',width:800,margin:"20px auto"}
     const[name,setName]=useState('')
     const[potentialPrice,setPrice]=useState('')
     const[predictedPrice,setPredicted]=useState('')
@@ -35,7 +33,7 @@ export default function Add() {
     const [servicerName, setServicer] = React.useState('');
     const [errorMessage , setErrorMessage] = React.useState('')
     const [isButtonDisabled, setIsButtonDisabled] = useState(true);
-    const [model, setModel] = useState('')
+    const [model, setModel] = useState(0)
     const navigate = useNavigate();
 
      const handleClick=async (e)=>{
@@ -102,131 +100,154 @@ export default function Add() {
     };
 
     return (
-        <Box
-            component="form"
-            sx={{
-                '& .MuiTextField-root': { m: 1, width: '25ch' },
-            }}
-            noValidate
-            autoComplete="off"
-        >
-            <Container>
-                <Paper elevation={3} style={paperStyle}>
-                    <h1 style={{color:"blue"}}>Dodaj zgłoszenie</h1>
-            <div>
-                <TextField
-                    required
-                    value={servicerName}
-                    onChange={(e)=>setServicer(e.target.value)}
-                    id="servicerName"
-                    label="Imie serwisanta"
-                />
-                <TextField
-                    required
-                    value={name}
-                    onChange={(e)=>setName(e.target.value)}
-                    id="name"
-                    label="Nazwa urządzenia"
-                />
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                    <DatePicker
-                        label="Data zgłoszenia"
-                        value={date}
-                        onChange={(newValue) => setDate(newValue)}
+        <Container maxWidth="md" sx={{ mt: 2 }}>
+            <Typography variant="h4" sx={{ mb: 2 }}>Dodaj zgłoszenie</Typography>
+            <Grid container spacing={2}>
+                <Grid item xs={12} sm={6}>
+                    <TextField
+                        required
+                        value={servicerName}
+                        onChange={(e) => setServicer(e.target.value)}
+                        id="servicerName"
+                        label="Imie serwisanta"
+                        fullWidth
                     />
-                </LocalizationProvider>
-                <FormControl>
-                    <FormLabel id="failure_type">Rodzaj awarii</FormLabel>
-                    <RadioGroup
-                        aria-labelledby="failure_type"
-                        value={failureType}
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                    <TextField
+                        required
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        id="name"
+                        label="Nazwa urządzenia"
+                        fullWidth
+                    />
+                </Grid>
 
-                        onChange={(event) => {
-                            handleFailureChange(event);
-
+                <Grid item xs={12} sm={6}>
+                    <FormControl>
+                        <FormLabel id="failure_type">Rodzaj awarii</FormLabel>
+                        <RadioGroup
+                            aria-labelledby="failure_type"
+                            value={failureType}
+                            onChange={(event) => {
+                                handleFailureChange(event);
+                            }}
+                            name="radio-buttons-group"
+                        >
+                            <FormControlLabel value="LOW" control={<Radio />} label="Niewielka" />
+                            <FormControlLabel value="MILD" control={<Radio />} label="Średnia" />
+                            <FormControlLabel value="HIGH" control={<Radio />} label="Poważna" />
+                            <FormControlLabel value="CRITICAL" control={<Radio />} label="Krytyczna" />
+                        </RadioGroup>
+                    </FormControl>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                    <FormControl>
+                        <FormLabel id="status">Status naprawy</FormLabel>
+                        <RadioGroup
+                            aria-labelledby="status"
+                            name="radio-buttons-group"
+                            value={status}
+                            onChange={(e) => setStatus(e.target.value)}
+                        >
+                            <FormControlLabel value="NEW" control={<Radio />} label="Nowe" />
+                            <FormControlLabel value="IN_PROGRESS" control={<Radio />} label="W trakcie" />
+                            <FormControlLabel value="FINISHED" control={<Radio />} label="Ukończone" />
+                            <FormControlLabel value="UNREPAIRABLE" control={<Radio />} label="Nie do naprawy" />
+                        </RadioGroup>
+                    </FormControl>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <DatePicker
+                            label="Data zgłoszenia"
+                            value={date}
+                            onChange={(newValue) => setDate(newValue)}
+                            renderInput={(params) => <TextField {...params} fullWidth />}
+                        />
+                    </LocalizationProvider>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                    <TextField
+                        required
+                        id="price"
+                        value={potentialPrice}
+                        onChange={(e) => setPrice(e.target.value)}
+                        label="Szacowany koszt"
+                        type="number"
+                        fullWidth
+                    />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <DatePicker
+                            label="Szac. ukończenie"
+                            value={potentialDate}
+                            onChange={(newValue) => setPotential(newValue)}
+                            renderInput={(params) => <TextField {...params} fullWidth />}
+                        />
+                    </LocalizationProvider>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                    <TextField
+                        disabled
+                        id="predictedPrice"
+                        value={predictedPrice}
+                        onChange={(e) => setPredicted(e.target.value)}
+                        label="Szacowany koszt przez AI"
+                        type="number"
+                        InputLabelProps={{
+                            shrink: true,
                         }}
-                        name="radio-buttons-group"
-                    >
-                        <FormControlLabel value="LOW" control={<Radio />} label="Niewielka" />
-                        <FormControlLabel value="MILD" control={<Radio />} label="Średnia" />
-                        <FormControlLabel value="HIGH" control={<Radio />} label="Poważna" />
-                        <FormControlLabel value="CRITICAL" control={<Radio />} label="Krytyczna" />
-                    </RadioGroup>
-                </FormControl>
-
-
-                <FormControl>
-                    <FormLabel id="status">Status naprawy</FormLabel>
-                    <RadioGroup
-                        aria-labelledby="status"
-                        name="radio-buttons-group"
-                        value={status}
-                        onChange={(e)=>setStatus(e.target.value)}
-                    >
-                        <FormControlLabel value="NEW" control={<Radio />} label="Nowe" />
-                        <FormControlLabel value="IN_PROGRESS" control={<Radio />} label="W trakcie" />
-                        <FormControlLabel value="FINISHED" control={<Radio />} label="Ukończone" />
-                        <FormControlLabel value="UNREPAIRABLE" control={<Radio />} label="Nie do naprawy" />
-                    </RadioGroup>
-                </FormControl>
-                <TextField
-                    required
-                    id="price"
-                    value={potentialPrice}
-                    onChange={(e)=>setPrice(e.target.value)}
-                    label="Szacowany koszt"
-                    type="number"
-                />
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                    <DatePicker
-                        label="Szac. ukończenie"
-                        value={potentialDate}
-                        onChange={(newValue) => setPotential(newValue)}
+                        fullWidth
                     />
-                </LocalizationProvider>
-                <TextField
-                    disabled
-                    id="predictedPrice"
-                    value={predictedPrice}
-                    onChange={(e)=>setPredicted(e.target.value)}
-                    label="Szacowany koszt przez AI"
-                    type="number"
-                />
-                <FormControl>
-                    <InputLabel id="demo-simple-select-label">Wybierz model AI</InputLabel>
-                    <Select
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
-                        value={model}
-                        label="Age"
-                        onChange={event => setModel(event.target.value)}
-                        sx={{ width: 200 }}
-                    >
-                        <MenuItem value={0}>Random Forest Regression</MenuItem>
-                        <MenuItem value={1}>Random Forest Classifier</MenuItem>
-                        <MenuItem value={2}>Linear Regression</MenuItem>
-                        <MenuItem value={3}>Logystic Regression</MenuItem>
-                        <MenuItem value={4}>Decision Tree Clasifier</MenuItem>
-                    </Select>
-                </FormControl>
-                <TextField
-                    id="repair_description"
-                    value={repairDescription}
-                    label="Opis podjętych działań"
-                    onChange={(e)=>setRepair(e.target.value)}
-                    fullWidth={false}
-                    style = {{width: 750, height: "auto"}}
-                    multiline={true}
-                />
+                </Grid>
+                <Grid item xs={12} sm={6}></Grid>
+                <Grid item xs={12} sm={6}>
+                    <FormControl>
+                        <InputLabel id="demo-simple-select-label">Wybierz model AI</InputLabel>
+                        <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            value={model}
+                            label="Model"
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
+                            onChange={(event) => setModel(event.target.value)}
+                            fullWidth
 
-            </div>
-
-                    {errorMessage && <p>{errorMessage}</p>}
-                    <Button variant="contained" onClick={handleClick}>Zatwierdź</Button>
-                    <Button variant="contained" onClick={handlePrediction} disabled={isButtonDisabled}>Szacuj</Button>
-                </Paper>
-
-            </Container>
-        </Box>
+                        >
+                            <MenuItem value={0}>Random Forest Regression</MenuItem>
+                            <MenuItem value={1}>Random Forest Classifier</MenuItem>
+                            <MenuItem value={2}>Linear Regression</MenuItem>
+                            <MenuItem value={3}>Logistic Regression</MenuItem>
+                            <MenuItem value={4}>Decision Tree Classifier</MenuItem>
+                        </Select>
+                    </FormControl>
+                </Grid>
+                <Grid item xs={12}>
+                    <TextField
+                        id="repair_description"
+                        value={repairDescription}
+                        label="Opis podjętych działań"
+                        onChange={(e) => setRepair(e.target.value)}
+                        fullWidth
+                        multiline
+                        rows={4}
+                    />
+                </Grid>
+                <Grid item xs={12}>
+                    <Button variant="contained" onClick={handleClick}>
+                        Zatwierdź
+                    </Button>
+                    <Button variant="contained" onClick={handlePrediction} disabled={isButtonDisabled}>
+                        Wykonaj szacowanie
+                    </Button>
+                </Grid>
+            </Grid>
+        </Container>
     );
 }
+
